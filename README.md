@@ -1,2 +1,2 @@
-# Fundamentos-Funciones
-![1](https://github.com/user-attachments/assets/c14a4b4f-091e-47ca-88e5-6c6c8cdb2ea8)
+# Objetos-arreglos
+![1](https://github.com/user-attachments/assets/6e24ccde-bf79-4722-93c6-c7d4a13f8118)
