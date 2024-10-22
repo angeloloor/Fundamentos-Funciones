@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Storage Example</title>
+    <style>
+        body {
+            background-color: #54FF54;
+            font-family: 'Monospace';
+        }
+    </style>
+</head>
+<body>
+    <h1>WEB STORAGE</h1>
+    <p>Choose your preferences:</p>
+    
+    <label for="backgroundColor">Choose background color:</label>
+    <input type="color" id="backgroundColor" name="backgroundColor" value="#54FF54">
+    
+    <label for="fontStyle">Choose font style:</label>
+    <select id="fontStyle" name="fontStyle">
+        <option value="Monospace">Monospace</option>
+        <option value="Sans-serif">Sans-serif</option>
+        <option value="Serif">Serif</option>
+    </select>
+    
+    <label for="imageChoice">Choose image:</label>
+    <select id="imageChoice" name="imageChoice">
+        <option value="Tortoise">Tortoise</option>
+        <option value="Dog">Dog</option>
+        <option value="Cat">Cat</option>
+    </select>
+    
+    <button onclick="savePreferences()">Save Preferences</button>
+    
+    <script>
+        function savePreferences() {
+            const bgColor = document.getElementById('backgroundColor').value;
+            const fontStyle = document.getElementById('fontStyle').value;
+            const imageChoice = document.getElementById('imageChoice').value;
+        
+            localStorage.setItem('backgroundColor', bgColor);
+            localStorage.setItem('fontStyle', fontStyle);
+            localStorage.setItem('imageChoice', imageChoice);
+            
+            
+            fetch('https://example.com/save-preferences', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    backgroundColor: bgColor,
+                    fontStyle: fontStyle,
+                    imageChoice: imageChoice,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => console.log('Preferences saved:', data))
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
